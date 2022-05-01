@@ -7,7 +7,8 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: 'app-post-create',
-  templateUrl: './post-create.component.html'
+  templateUrl: './post-create.component.html',
+  styleUrls: ['./post-create.component.css']
 })
 //not for long html code. link the html url
 //selector which is allows us use that component. as our own html tag
