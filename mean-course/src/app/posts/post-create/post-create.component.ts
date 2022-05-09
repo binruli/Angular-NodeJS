@@ -3,7 +3,7 @@
 //class is typescript feature, allows us creat blueprint for an object though we will never creat that component object on our own.
 //angular will instanitiate it and creat it and use it.
 
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 
 @Component({
   selector: 'app-post-create',
@@ -14,11 +14,21 @@ import { Component } from "@angular/core";
 //selector which is allows us use that component. as our own html tag
 //<textarea rows="8" [value]="newPost" #postInput></textarea> other way
 export class PostCreateComponent{
-  enteredValue = '';
-  newPost = 'NO CONTENT';
+  enteredTitle = '';
+  enteredContent = '';
+  @Output() postCreated = new EventEmitter();
+  //newPost = 'NO CONTENT';
 
   onAddPost() {
-    alert('Post added!');
-    this.newPost = this.enteredValue;
+    const post = {
+      title: this.enteredTitle,
+      content: this.enteredContent,
+    };
+    this.postCreated.emit(post);
+    //alert('Post added!');
+    //this.newPost = this.enteredValue;
   }
 }
+//matInput: turn into a material input field
+//ngModel: creates a formControl instance from a domain model and binds it to a form control element.
+//Output: turns into an event to which you can list to from the outside(means in the parent component)
